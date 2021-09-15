@@ -1,0 +1,21 @@
+service: lambda-script
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: us-west-2
+  profile: default
+  timeout: 30
+  memorySize: 128
+  logRetentionInDays: 7
+
+functions:
+  getNews:
+    handler: handler.getNews
+    events:
+      - http:
+          path: news
+          method: get
